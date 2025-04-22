@@ -53,8 +53,23 @@ npx esbuild expose.js --bundle --outfile=web3-extension.js --format=iife
   <button id="connect" disabled>Connect Wallet</button>
   <ul id="accounts"></ul>
 
-  <script>
+  <script type="module">
+    import {
+      GearApi,
+      ProgramMetadata
+    } from 'https://esm.sh/@gear-js/api@0.37.0';
+
+    const gearApi = await GearApi.create({
+      providerAddress: 'wss://testnet.vara.network'
+    });
+
+    console.log('✅ Connected to:', await gearApi.chain());
+
    
+  </script>
+
+  <script>
+    
     const waitForWeb3 = setInterval(() => {
       if (window.web3Enable && window.web3Accounts) {
         clearInterval(waitForWeb3);

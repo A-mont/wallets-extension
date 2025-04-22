@@ -10,8 +10,23 @@
   <button id="connect" disabled>Connect Wallet</button>
   <ul id="accounts"></ul>
 
+  <script type="module">
+    import {
+      GearApi,
+      ProgramMetadata
+    } from 'https://esm.sh/@gear-js/api@0.37.0';
+
+    const gearApi = await GearApi.create({
+      providerAddress: 'wss://testnet.vara.network'
+    });
+
+    console.log('✅ Connected to:', await gearApi.chain());
+
+   
+  </script>
+
   <script>
-    // Espera a que se cargue la librería
+    
     const waitForWeb3 = setInterval(() => {
       if (window.web3Enable && window.web3Accounts) {
         clearInterval(waitForWeb3);
