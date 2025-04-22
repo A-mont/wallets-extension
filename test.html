@@ -1,46 +1,3 @@
-# wallets-extension
-
-# Polkadot Extension Demo 
-
-This project shows how to use the Polkadot.js browser extension in a plain HTML page.
-
----
-
-## 🔧 Setup Instructions
-
-### 1. Initialize the project
-
-```bash
-npm init -y
-```
-### 2. Install the Polkadot extension package
-
-```bash
-npm install @polkadot/extension-dapp
-```
-
-### 3. Create expose.js
-
-```jsx
-import { web3Enable, web3Accounts } from '@polkadot/extension-dapp';
-
-window.web3Enable = web3Enable;
-window.web3Accounts = web3Accounts;
-```
-### 4. Install esbuild
-
-```bash
-npm install --save-dev esbuild
-```
-
-### 5. . Bundle it into web3-extension.js
-
-```bash
-npx esbuild expose.js --bundle --outfile=web3-extension.js --format=iife
-```
-
-### 6. Create test.html
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +11,7 @@ npx esbuild expose.js --bundle --outfile=web3-extension.js --format=iife
   <ul id="accounts"></ul>
 
   <script>
-   
+    // Espera a que se cargue la librería
     const waitForWeb3 = setInterval(() => {
       if (window.web3Enable && window.web3Accounts) {
         clearInterval(waitForWeb3);
@@ -85,16 +42,3 @@ npx esbuild expose.js --bundle --outfile=web3-extension.js --format=iife
   </script>
 </body>
 </html>
-
-```
-
-### 7. Run a local dev server
-
-```bash
-npx serve .
-```
-Open your browser at:
-
-```bash
-http://localhost:3000/test.html
-```
